@@ -14,8 +14,8 @@
 # DEFAULT_REGION, TAG, SIZEを環境に合わせて変更してください。
 ########################################################
 # cron設定サンプル UTCです。9時起動17:30停止。営業日のみ実行です。
-#00 0 * * 1-5 /home/ec2-user/workspace/ec2control.sh --start >> ~/ec2control.log 2>&1
-#30 8 * * 1-5 /home/ec2-user/workspace/ec2control.sh --stop >> ~/ec2control.log 2>&1
+#00 0 * * 1-5 ~/ec2control.sh --start >> ~/ec2control.log 2>&1
+#30 8 * * 1-5 ~/ec2control.sh --stop >> ~/ec2control.log 2>&1
 ########################################################
 
  
