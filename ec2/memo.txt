@@ -1,2 +1,30 @@
+#以下参考にさせていただいたページです。
+# http://qiita.com/bohebohechan/items/891120175efc1b3cc7c4
+#
+
+
+# リージョン内で稼働している全インスタンスの情報取得
+    $> aws ec2 describe-instances
+    
+# インスタンスIDを指定して詳細情報を取得
+    $> aws ec2 describe-instances --instance-ids ${instance-id}
+
+# AMIを指定してインスタンスを立てる (--dry-runなので実際には実行されない)
+    $> aws ec2 run-instances  --dry-run --image-id ami-XXXX  --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
+# dry-runをはずしてAMIを指定してインスタンスを立てる
+    $> aws ec2 run-instances  --image-id ami-XXXX --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
+
+
+# インスタンスの情報を取得
+    $> aws ec2 describe-instances --instance-id i-XXXX --output json
+
+# タグの名前を付ける
+    $> aws ec2 create-tags --resources  i-XXXX --tags '[{"Key": "Name", "Value": "Test"}]'
+
+# Elastic IPを付与
+    $> aws ec2 associate-address --allocation-id eipalloc-XXX --network-interface-id eni-XXXXX
+    
 # 指定したインスタンスIDのAMIを取得する
-aws ec2 create-image --instance-id "Instance_ID" --name "My server" --description "An AMI for my server"
+aws ec2 create-image --instance-id ${instance-id} --name "My server" --description "An AMI for my server"
+
+
