@@ -1,0 +1,2 @@
+# 指定したインスタンスIDのAMIを取得する
+aws ec2 create-image --instance-id "Instance_ID" --name "My server" --description "An AMI for my server"
