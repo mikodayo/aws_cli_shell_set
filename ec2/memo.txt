@@ -30,7 +30,9 @@ aws ec2 create-image --instance-id ${instance-id} --name "My server" --descripti
     $> aws ec2 run-instances  --image-id ami-XXXX --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
 
 
-# 指定したインスタンスIDからAMIIDを取得する
+
+# 指定したインスタンスIDのAMIのID(ImageId)を取得する
+
 
 
 ########## Elastic IP
