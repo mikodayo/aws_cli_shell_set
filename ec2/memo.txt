@@ -1,4 +1,5 @@
-#以下参考にさせていただいたページです。
+## This page is memo for cli script.
+## reference 
 # http://qiita.com/bohebohechan/items/891120175efc1b3cc7c4
 #
 
@@ -11,10 +12,10 @@
     $> aws ec2 describe-instances --instance-ids ${instance-id}
 
 # インスタンスの情報を取得
-    $> aws ec2 describe-instances --instance-id i-XXXX --output json
+    $> aws ec2 describe-instances --instance-id  ${instance-id} --output json
 
 # タグの名前を付ける
-    $> aws ec2 create-tags --resources  i-XXXX --tags '[{"Key": "Name", "Value": "Test"}]'
+    $> aws ec2 create-tags --resources  ${instance-id} --tags '[{"Key": "Name", "Value": "Test"}]'
 
 # Elastic IPを付与
     $> aws ec2 associate-address --allocation-id eipalloc-XXX --network-interface-id eni-XXXXX
@@ -29,11 +30,8 @@ aws ec2 create-image --instance-id ${instance-id} --name "My server" --descripti
 # dry-runをはずしてAMIを指定してインスタンスを立てる
     $> aws ec2 run-instances  --image-id ami-XXXX --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
 
-
-
 # 指定したインスタンスIDのAMIのID(ImageId)を取得する
-
-
+aws ec2 describe-instances --instance-ids ${instance-id} | jq -r '.Reservations[].Instances[].ImageId'
 
 ########## Elastic IP
 # 関連づけられていないElastic IPをチェックする
