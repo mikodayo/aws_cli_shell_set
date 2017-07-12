@@ -21,6 +21,8 @@
     $> aws ec2 associate-address --allocation-id eipalloc-XXX --network-interface-id eni-XXXXX
 
 ########## AMI
+## AMI起動に必要な情報はすでに起動しているAMIから取得してそれを充てればOK
+
 # 指定したインスタンスIDのAMIを作成する
 aws ec2 create-image --instance-id ${instance-id} --name "My server" --description "An AMI for my server"
 
