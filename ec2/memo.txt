@@ -22,15 +22,23 @@
 
 ########## AMI
 ## AMI起動に必要な情報はすでに起動しているAMIから取得してそれを充てればOK
-
+## 現在起動中のインスタンス詳細を取得しておき、AMIから起動したインスタンスの詳細と比較する
 # 指定したインスタンスIDのAMIを作成する
 aws ec2 create-image --instance-id ${instance-id} --name "My server" --description "An AMI for my server"
 
 # AMIを指定してインスタンスを立てる (--dry-runなので実際には実行されない)
-    $> aws ec2 run-instances  --dry-run --image-id ami-XXXX  --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
-    
+    $> aws ec2 run-instances  --dry-run --image-id ami-XXXX  --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
+
 # dry-runをはずしてAMIを指定してインスタンスを立てる
     $> aws ec2 run-instances  --image-id ami-XXXX --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
+    
+    # 必要な引数
+    ・--image-id
+    ・--key-name
+    ・--count 1
+    ・--security-group-ids
+    ・--subnet-id
+    ・--instance-type
 
 # 指定したインスタンスIDのAMIのID(ImageId)を取得する
     $> aws ec2 describe-instances --instance-ids ${instance-id} | jq -r '.Reservations[].Instances[].ImageId'
