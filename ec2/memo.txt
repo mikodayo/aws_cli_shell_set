@@ -1,7 +1,9 @@
 ## This page is memo for cli script.
 ## reference 
+#= ami
 # http://qiita.com/bohebohechan/items/891120175efc1b3cc7c4
-#
+#= delete ec2
+# http://qiita.com/tcsh/items/f2ac887777d374b1ad61
 
 
 ########## EC2
@@ -18,7 +20,10 @@
     $> aws ec2 create-tags --resources  ${instance-id} --tags '[{"Key": "Name", "Value": "Test"}]'
 
 # Elastic IPを付与
-    $> aws ec2 associate-address --allocation-id eipalloc-XXX --network-interface-id eni-XXXXX
+    $> aws ec2 associate-address --allocation-id ${eipalloc-XXX} --network-interface-id ${eni-XXXXX}
+
+# EC2を削除
+    $> aws ec2 terminate-instances ${instance-id}
 
 ########## AMI
 ## AMI起動に必要な情報はすでに起動しているAMIから取得してそれを充てればOK
