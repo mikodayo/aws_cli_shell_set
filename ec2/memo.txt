@@ -64,7 +64,7 @@ aws rds create-db-instance \
     --master-user-password password \
     --backup-retention-period 3 
 
-
-
-
+########### IAM
+    # 指定したIAMロールのArnを取得する
+    $aws iam get-role --role-name hello_exec_role |jq -r  .'Role.Arn'
 
