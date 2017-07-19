@@ -29,6 +29,7 @@ http://qiita.com/tcsh/items/f2ac887777d374b1ad61
 AMI起動に必要な情報はすでに起動しているAMIから取得してそれを充てればOK
 現在起動中のインスタンス詳細を取得しておき、AMIから起動したインスタンスの詳細と比較する
 指定したインスタンスIDのAMIを作成する
+
     $> aws ec2 create-image --instance-id ${instance-id} --name "My server" --description "An AMI for my server"
 
 ### AMIを指定してインスタンスを立てる (--dry-runなので実際には実行されない)
