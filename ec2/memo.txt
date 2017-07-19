@@ -34,6 +34,12 @@ aws ec2 create-image --instance-id ${instance-id} --name "My server" --descripti
 # AMIを指定してインスタンスを立てる (--dry-runなので実際には実行されない)
     $> aws ec2 run-instances  --dry-run --image-id ami-XXXX  --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
 
+# インスタンスを起動し起動したinstance_idにタグを付ける
+    $> aws ec2 run-instances [--command option] | jq -r '.Instances[0].InstanceId' | xargs -IINSTANCE_ID aws ec2 create-tags --resources INSTANCE_ID  --tags Key=Name,Value=${instance-id}
+    
+# 起動しているインスタンスから必要情報を取得する
+
+
 # dry-runをはずしてAMIを指定してインスタンスを立てる
     $> aws ec2 run-instances  --image-id ami-XXXX --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
     
