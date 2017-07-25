@@ -8,7 +8,7 @@ http://qiita.com/tcsh/items/f2ac887777d374b1ad61
 
 ## S3
 ### フォルダ配下のファイルサイズ合計を算出する
-    $> aws s3 ls s3://${bucket name}/${folder name}/  --recursive --human --sum 
+    $> aws s3 ls s3://${bucket name}/${folder name}/  --recursive --human --sum 
 
 ## EC2
 ### リージョン内で稼働している全インスタンスの情報取得
