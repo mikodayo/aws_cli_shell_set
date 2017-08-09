@@ -15,10 +15,8 @@ http://qiita.com/tcsh/items/f2ac887777d374b1ad61
     $> aws ec2 describe-instances
     
 ### インスタンスIDを指定して詳細情報を取得
-    $> aws ec2 describe-instances --instance-ids ${instance-id}
-
-### インスタンスの情報を取得
-    $> aws ec2 describe-instances --instance-id  ${instance-id} --output json
+    $> aws ec2 describe-instances --instance-ids ${instance-ids}
+    $> aws ec2 describe-instances --instance-id  ${instance-id}
 
 ### タグの名前を付ける
     $> aws ec2 create-tags --resources  ${instance-id} --tags '[{"Key": "Name", "Value": "Test"}]'
