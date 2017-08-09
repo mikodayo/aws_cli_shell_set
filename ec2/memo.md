@@ -36,6 +36,9 @@ AMI起動に必要な情報はすでに起動しているAMIから取得して�
 
     $> aws ec2 create-image --instance-id ${instance-id} --name "My server" --description "An AMI for my server"
 
+### tagを指定してAMIの詳細を表示する
+aws ec2 describe-images  --filters  "Name=tag-key,Values=Name" --filters "Name=tag-value,Values=${tag_name}"
+
 ### AMIを指定してインスタンスを立てる (--dry-runなので実際には実行されない)
     $> aws ec2 run-instances  --dry-run --image-id ami-XXXX  --key-name demo --count 1 --security-group-ids sg-XXXX  --subnet-id subnet-XXXX --instance-type t2.micro
 
