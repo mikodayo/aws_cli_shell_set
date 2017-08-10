@@ -27,6 +27,12 @@ http://qiita.com/tcsh/items/f2ac887777d374b1ad61
 ### EC2を削除
     $> aws ec2 terminate-instances --instance-id ${instance-id}
 
+### 削除保護
+#### 追加
+    $> aws ec2 modify-instance-attribute --instance-id ${instance-id} --disable-api-termination
+#### 削除
+    $> aws ec2 modify-instance-attribute --instance-id ${instance-id} --no-disable-api-termination
+
 ## AMI
 AMI起動に必要な情報はすでに起動しているAMIから取得してそれを充てればOK
 現在起動中のインスタンス詳細を取得しておき、AMIから起動したインスタンスの詳細と比較する
